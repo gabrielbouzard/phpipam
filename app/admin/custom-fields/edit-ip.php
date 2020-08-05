@@ -45,6 +45,9 @@ $fieldval = (array) $Tools->fetch_full_field_definition($_POST['table'], $_POST[
 
 <script type='text/javascript'>
 $(document).ready (function () {
+
+console.log("z");
+
 // check spce
 check_name_whitespace ();
 // on focusout
@@ -63,9 +66,8 @@ function check_name_whitespace () {
 	}
 }
 
-$("#editCustomFieldsTable tr:last").after('<tr><td><input type="text" name="regex" class="form-control input-sm" value="" placeholder="Enter validation regex"</td></tr>');
-
 });
+
 </script>
 
 <div class="pHeader"><?php print ucwords(_("$_POST[action]")); ?> <?php print _('custom field'); ?></div>
@@ -150,15 +152,8 @@ $("#editCustomFieldsTable tr:last").after('<tr><td><input type="text" name="rege
 		</td>
 	</tr>
 
-	<?php
-		if(htmlspecialchars($_POST['button']) == "editCustomFieldButton") {
-			echo '<tr><td>Field Validation Regex</td><td><input name="regex" type="text" value="" class="form-control input-sm" placeholder=".*?"/></td></tr>';
-		}
-	?>
-	
 	</table>
 	</form>
-
 </div>
 
 

@@ -624,6 +624,10 @@ class Admin extends Common_functions {
 		else {
 			$this->Result->show("info alert-absolute", _("No records found to replace"), false);
 		}
+
+		# update custom ip requests fields regex
+		
+
 	}
 
 
@@ -667,6 +671,12 @@ class Admin extends Common_functions {
 	public function update_custom_field_definition ($field) {
 		if (!in_array($field['fieldType'], $this->valid_custom_field_types())) {
 			$this->Result->show("danger", _("Error: ")._("Invalid custom field type"));
+			return false;
+		}
+
+		$regex = $field['regex'];
+		if (is_null($regex) || var_dump(preg_match($regex, null) === false)) {
+			$this->Result->show("danger", _("Error: ")._("Invalid regex statement"));
 			return false;
 		}
 

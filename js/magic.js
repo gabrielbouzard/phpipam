@@ -2501,7 +2501,8 @@ $(document).on("click", ".edit-custom-field", function() {
     var action    = $(this).attr('data-action');
     var fieldName = $(this).attr('data-fieldname');
     var table	  = $(this).attr('data-table');
-    $.post('app/admin/custom-fields/edit.php',  {action:action, fieldName:fieldName, table:table}, function(data) {
+    var button    = $(this).attr('data-button');
+    $.post('app/admin/custom-fields/edit.php',  {action:action, fieldName:fieldName, table:table, button:button}, function(data) {
         $('#popupOverlay div.popup_w400').html(data);
         showPopup('popup_w400');
         hideSpinner();
@@ -2525,7 +2526,8 @@ $('table.customIP button.down').click(function() {
     var current  = $(this).attr('data-fieldname');
     var next     = $(this).attr('data-nextfieldname');
     var table	 = $(this).attr('data-table');
-    $.post('app/admin/custom-fields/order.php', {current:current, next:next, table:table}, function(data) {
+    var button   = $(this).attr('data-button');
+    $.post('app/admin/custom-fields/order.php', {current:current, next:next, table:table, button:button}, function(data) {
         $('div.'+table+'-order-result').html(data).slideDown('fast');
         //reload after 2 seconds if succeeded!
         reload_window (data);

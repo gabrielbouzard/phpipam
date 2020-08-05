@@ -45,6 +45,33 @@ foreach($custom_tables as $k=>$f) {
 <div class="alert alert-info alert-absolute"><?php print _('You can add additional custom fields to IP addresses and subnets (like CustomerId, location, ...)'); ?>.</div>
 <hr style="margin-top:50px;clear:both;">
 
+<!-- <script type='text/javascript'>
+$(document).ready (function () {
+
+	// $("#editCustomFieldButton").click(function() {
+	// 	// $("#editCustomFieldsTable tr:last").after('<tr><td><input type="text" name="regex" class="form-control input-sm" value="" placeholder="Enter validation regex"</td></tr>');
+	// 	$.ajax({
+   	// 		type: 'post',
+   	// 		url: 'edit.php',
+   	// 	data: {data-button : data-button},
+   	// 	success: function (res){
+    //  		alert(res);
+ 	// 	});
+	// 	// console.log('a');
+	// 	// alert(this.id);edit
+
+	// });
+
+	// $("#addCustomFieldButton").click(function() {
+	// 	$("#editCustomFieldsTable").append(
+	// 		'<tr><td><input type="text" name="Regex" class="form-control input-sm" value="" placeholder="Enter validation regex"</td></tr>'
+	// 	);
+	// 	console.log('b');
+	// });
+
+}); -->
+
+<!-- </script> -->
 
 <table class="customIP table table-striped table-auto table-top" style="min-width:400px;">
 
@@ -131,9 +158,15 @@ foreach($custom_fields as $k=>$cf) {
 			else								{ print "<td><span class='text-success'>"._('Yes')."</span></td>"; }
 
 			#actions
+			$editCustomFieldButtonId = "";	
+			$addCustomFieldButtonId = "";
+			if($k == "requests") { 
+				$editCustomFieldButtonId .= "data-button='editCustomFieldButton'"; 
+				$addCustomFieldButtonId .= "data-button='addCustomFieldButton'";
+			} 
 			print "<td class='actions'>";
 			print "	<div class='btn-group'>";
-			print "		<button class='btn btn-xs btn-default edit-custom-field' data-action='edit'   data-fieldname='$f[name]' data-table='$table'><i class='fa fa-pencil'></i></button>";
+			echo "		<button " . $editCustomFieldButtonId . " class='btn btn-xs btn-default edit-custom-field' data-action='edit'   data-fieldname='$f[name]' data-table='$table'><i class='fa fa-pencil'></i></button>";
 			print "		<button class='btn btn-xs btn-default edit-custom-field' data-action='delete' data-fieldname='$f[name]' data-table='$table'><i class='fa fa-times'></i></button>";
 			print "	</div>";
 
@@ -151,7 +184,7 @@ foreach($custom_fields as $k=>$cf) {
 	//add
 	print "<tr>";
 	print "<td colspan='8' style='padding-right:0px;'>";
-	print "	<button class='btn btn-xs btn-default pull-right edit-custom-field' data-action='add'  data-fieldname='' data-table='$table' rel='tooltip' data-placement='right' title='"._($tooltip)."'><i class='fa fa-plus'></i></button>";
+	print "	<button " . $addCustomFieldButtonId . " class='btn btn-xs btn-default pull-right edit-custom-field' data-action='add'  data-fieldname='' data-table='$table' rel='tooltip' data-placement='right' title='"._($tooltip)."'><i class='fa fa-plus'></i></button>";
 	print "</td>";
 	print "</tr>";
 

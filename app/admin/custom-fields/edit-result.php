@@ -24,7 +24,6 @@ $_POST = $Admin->strip_input_tags($_POST);
 # validate csrf cookie
 $User->Crypto->csrf_cookie ("validate", "custom_field", $_POST['csrf_cookie']) === false ? $Result->show("danger", _("Invalid CSRF cookie"), true) : "";
 
-
 /* checks */
 if($_POST['action'] == "delete") {
 	# no cecks
@@ -64,6 +63,10 @@ else {
 		if(!is_numeric($_POST['fieldSize']))								{ $errors[] = _('Integer values must be numeric'); }
 
 	}
+
+	// ip requests custom field regex
+	
+
 }
 
 /* die if errors otherwise execute */
